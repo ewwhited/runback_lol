@@ -1,0 +1,4 @@
+API_KEY = ""
+MY_PUUID = ""
+REGION = ""
+REGION_KEY = ""
