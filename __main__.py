@@ -68,9 +68,9 @@ def main():
                     print(f"You were on the same team, and the game resulted in a {myRecentData[3]}.")
                 else:
                     print(f"You were on opposing teams, and the game resulted in a {myRecentData[3]} for you and a {otherRecentData[3]} for {matchedSummonerName}.")
-                if len(puuidMatches) < 1 and firstRun == 0: #change this later lol
-                    firstRun = 1
-                    print("No duplicates found in recent match.")
+            if len(puuidMatches) <= 1 and firstRun == 0: #change this later lol
+                print("No duplicates found in recent match.")
+                firstRun = 1                    
     con.commit() #commit any changes to db at the end
     cursor.close() #close connection to db at the end
 
