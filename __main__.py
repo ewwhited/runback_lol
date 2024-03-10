@@ -39,8 +39,6 @@ def main():
     matchIdsAPI = fetchMatchIds(str(getPuuid.fetchone())[2:-3]) #get matchIds from puuid, after putting puuid in a format API can understand
     matchIdsDB = retrieveMatchIds(cursor) #get the matchIds which already exist in DB
     saveNewMatchIds(matchIdsDB, matchIdsAPI, cursor) #save only the new matchIds to DB
-
-    firstRun = 0 #cheap way to escape later down
     
     exclusionsList = [] #get this list started, will fill it with your exclusions
     for exclusion in exclude.exclusions:
@@ -67,10 +65,7 @@ def main():
                 if recentTeam is True:
                     print(f"You were on the same team, and the game resulted in a {myRecentData[3]}.")
                 else:
-                    print(f"You were on opposing teams, and the game resulted in a {myRecentData[3]} for you and a {otherRecentData[3]} for {matchedSummonerName}.")
-            if len(puuidMatches) <= 1 and firstRun == 0: #change this later lol
-                print("No duplicates found in recent match.")
-                firstRun = 1                    
+                    print(f"You were on opposing teams, and the game resulted in a {myRecentData[3]} for you and a {otherRecentData[3]} for {matchedSummonerName}.")                
     con.commit() #commit any changes to db at the end
     cursor.close() #close connection to db at the end
 

@@ -116,7 +116,7 @@ def fetchChampInfo(matchId, myPuuid, otherPuuid, region = settings.REGION):
                 positionsFormatted.append("Support")
         myPosition = positionsFormatted[0]
         otherPosition = positionsFormatted[1]
-        if responseJSON['info']['participants'][myIndex]['win'] == 'true':
+        if responseJSON['info']['participants'][myIndex]['win'] is True:
             myOutcome = 'win'
         else:
             myOutcome = 'loss'
@@ -125,7 +125,7 @@ def fetchChampInfo(matchId, myPuuid, otherPuuid, region = settings.REGION):
             otherOutcome = myOutcome
         else:
             sameTeam = False
-            if responseJSON['info']['participants'][myIndex]['win'] == 'true':
+            if responseJSON['info']['participants'][myIndex]['win'] is True:
                 otherOutcome = 'loss'
             else:
                 otherOutcome = 'win'
